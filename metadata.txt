@@ -1,0 +1,23 @@
+[general]
+name=Evapotranspiration Calculator
+qgisMinimumVersion=3.22
+description=Estimate daily potential evapotranspiration (ET₀) using the Hargreaves formula and ERA5 reanalysis temperature data from the Copernicus Climate Data Store.
+version=1.0.0
+author=Ilias Machairas
+email=iliasmachairas@outlook.com
+about=This plugin downloads ERA5 2m temperature data (hourly) from the Copernicus Climate Data Store (CDS) for a user-selected point and date range, computes daily Tmax, Tmin, and Tmean, calculates extraterrestrial radiation (Ra) based on latitude and day of year, and then applies the Hargreaves–Samani equation to estimate daily reference evapotranspiration (ET₀). Results are shown as an interactive time-series chart and can be exported to CSV. Hargreaves is the first supported method — more evapotranspiration methods are planned.
+
+tracker=https://github.com/iliasmachairas/Evapotranspiration-Calculator/issues
+repository=https://github.com/iliasmachairas/Evapotranspiration-Calculator
+
+hasProcessingProvider=no
+tags=evapotranspiration,hargreaves,ERA5,CDS,climate,hydrology,ET0
+
+category=Analysis
+icon=icon.png
+
+experimental=False
+deprecated=False
+
+changelog=
+    1.0.0 - Initial release
