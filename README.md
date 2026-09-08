@@ -78,4 +78,4 @@ Bug reports and feature requests: [issue tracker](https://github.com/iliasmachai
 
 ## License
 
-Not yet specified — check the repository for the current license before reuse.
+[GPL-3.0](LICENSE)
