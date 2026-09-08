@@ -9,6 +9,7 @@ about=This plugin downloads ERA5 2m temperature data (hourly) from the Copernicu
 
 tracker=https://github.com/iliasmachairas/Evapotranspiration-Calculator/issues
 repository=https://github.com/iliasmachairas/Evapotranspiration-Calculator
+homepage=https://github.com/iliasmachairas/Evapotranspiration-Calculator
 
 hasProcessingProvider=no
 tags=evapotranspiration,hargreaves,ERA5,CDS,climate,hydrology,ET0
