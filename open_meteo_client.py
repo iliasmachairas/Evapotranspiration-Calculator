@@ -17,6 +17,7 @@ from datetime import date
 
 import pandas as pd
 
+from .http_utils import safe_urlopen
 
 ARCHIVE_URL = "https://archive-api.open-meteo.com/v1/archive"
 
@@ -73,7 +74,7 @@ def download_daily_temperature(
 
     try:
         req = urllib.request.Request(url)
-        with urllib.request.urlopen(req, timeout=60) as resp:
+        with safe_urlopen(req, timeout=60) as resp:
             body = resp.read().decode("utf-8")
     except urllib.error.HTTPError as exc:
         detail = exc.read().decode("utf-8", errors="replace")

@@ -23,6 +23,8 @@ import numpy as np
 import pandas as pd
 from osgeo import gdal
 
+from .http_utils import safe_urlopen
+
 # Suppress GDAL warnings about unrecognised NetCDF attributes
 gdal.UseExceptions()
 gdal.SetConfigOption("CPL_LOG", "OFF")
@@ -127,7 +129,7 @@ def _cds_headers(api_key: str, content_type: str = None) -> dict:
 
 def _http_get_json(url: str, api_key: str) -> dict:
     req = urllib.request.Request(url, headers=_cds_headers(api_key))
-    with urllib.request.urlopen(req, timeout=120) as resp:
+    with safe_urlopen(req, timeout=120) as resp:
         return json.loads(resp.read().decode("utf-8"))
 
 
@@ -146,7 +148,7 @@ def _cds_retrieve(api_key: str, request_body: dict,
     )
 
     try:
-        resp = urllib.request.urlopen(req, timeout=120)
+        resp = safe_urlopen(req, timeout=120)
     except urllib.error.HTTPError as exc:
         body = exc.read().decode("utf-8", errors="replace")
         raise CDSDownloadError(
@@ -227,7 +229,7 @@ def _extract_download_url(results: dict) -> Optional[str]:
 def _download_url_to_file(url: str, api_key: str,
                           target_path: str, msg) -> None:
     req = urllib.request.Request(url, headers=_cds_headers(api_key))
-    with urllib.request.urlopen(req, timeout=600) as resp:
+    with safe_urlopen(req, timeout=600) as resp:
         total = resp.headers.get("Content-Length")
         downloaded = 0
         with open(target_path, "wb") as f:
