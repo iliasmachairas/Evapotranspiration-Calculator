@@ -48,6 +48,15 @@ ET₀ = 0.0023 × Ra × (Tmean + 17.8) × √(Tmax − Tmin)
 
 Grid resolution can be switched between **ERA5-Land** (0.1° ≈ 11 km) and **ERA5** (0.25° ≈ 25 km).
 
+## Requirements
+
+- QGIS 3.22+
+- Python packages available to QGIS's own Python (not necessarily your system Python): `numpy`, `pandas`, `matplotlib`. `numpy`/`pandas` usually ship with QGIS already; `matplotlib` isn't guaranteed to — if the plugin fails to load with `ModuleNotFoundError: No module named 'matplotlib'` (or `numpy`/`pandas`), install the missing one against QGIS's own interpreter, e.g. on Windows:
+  ```
+  "C:\Program Files\QGIS <version>\bin\python-qgis-ltr.bat" -m pip install matplotlib
+  ```
+  (that filename is `python-qgis.bat` instead of `python-qgis-ltr.bat` on a non-LTR release — check your QGIS `bin` folder; adjust the install path too. On Linux/macOS, run `pip install matplotlib` using whichever Python your QGIS install actually uses, not necessarily the system `python3`.)
+
 ## Installation
 
 **From a release ZIP**
